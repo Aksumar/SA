@@ -12,11 +12,11 @@ import java.util.Iterator;
 // каждый столбец это вопрос, строка это респондент
 // пересечение - ответ респондента на вопрос
 public class ExcelReader {
-    private final File filePath;
+    private final File filePath ;
     private final static DataFormatter dataFormatter = new DataFormatter();
 
     public ExcelReader(String path) {
-        filePath = new File(path);
+        filePath = new File("/home/lilia/Desktop/SA/sweater/uploads/" + path);
     }
 
     public ArrayList<Responder> read() throws IOException {
