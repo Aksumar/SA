@@ -1,5 +1,6 @@
 package com.example.sweater.Controller;
 
+import com.example.sweater.domain.Servey.Servey;
 import com.example.sweater.domain.Servey.TableExcel;
 import com.example.sweater.domain.User.User;
 import com.example.sweater.repos.MessageRepoTODELETE;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -56,7 +58,7 @@ public class MainController {
 
             file.transferTo(new File(uploadPath + "/" + resultFileName));
 
-            TableExcel uploadedTable = new TableExcel(resultFileName, userAuthor);
+            Servey uploadedServey = new Servey(resultFileName, userAuthor);
         }
 
         return "main";
