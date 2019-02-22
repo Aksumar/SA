@@ -3,6 +3,7 @@ package com.example.sweater.domain.Servey;
 import com.example.sweater.Algorithms.ExcelExtract.ExcelReader;
 import com.example.sweater.Algorithms.ExcelExtract.Question;
 import com.example.sweater.Algorithms.ExcelExtract.Responder;
+import com.example.sweater.Algorithms.ExcelExtract.Transfer;
 import com.example.sweater.domain.User.User;
 
 import java.io.IOException;
@@ -17,7 +18,7 @@ public class TableExcel {
     public TableExcel(String path, User user) throws IOException {
         ExcelReader reader = new ExcelReader(path);
         responders = reader.read();
-        questions = reader.questions();
+        questions =  new Transfer().transfer(responders, reader.questions());
         userOwner = user;
     }
 

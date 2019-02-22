@@ -1,18 +1,31 @@
 <#import "parts/common.ftl" as c>
 
-<#import "parts/login_form.ftl" as l>
 <@c.page>
-<div>
-    <@l.logout/>
 
-</div>
+<div>
     <form method="post" enctype="multipart/form-data">
         <div>Загрузите таблицу для анализа :</div>
-        <input type="file" name="file">
+        <div class="form-group">
+            <div class="custom-file">
+                <input type="file" name="file" id="customFile">
+                <label class="custom-file-label" for="customFile">Choose file</label>
+            </div>
+        </div>
         <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-        <button type="submit">Добавить</button>
+        <button type="submit" class="btn btn-primary ml-2">Добавить</button>
     </form>
 
 
+    <p>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            Additional settings
+        </button>
+    </p>
+    <div class="collapse" id="collapseExample">
+        <div class="card card-body">
+            блаблабла
+        </div>
+    </div>
 
+</div>
 </@c.page>
