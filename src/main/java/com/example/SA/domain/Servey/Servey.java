@@ -8,7 +8,9 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * Объект самой анкеты
+ * Объект самой анкеты. Помимо объекта таблицы (TableExcel) в ней хранятся дополнительные поля : номера важных вопросов для
+ * пользователя, термины, которые он ввел ( TODO пока не реализовано )
+ * Объединенные в группы вопросы и т.д.
  */
 public class Servey {
 
@@ -25,8 +27,6 @@ public class Servey {
      * По данным вопросам будет запущен полный анализ
      */
     private List<Integer> importantQuestions;
-
-    private List<GroupOfQuestions> groupOfQuestions;
 
     private List<Term> terms;
 

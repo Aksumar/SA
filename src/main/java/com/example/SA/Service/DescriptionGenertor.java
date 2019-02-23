@@ -8,6 +8,9 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+/**
+ * Основной класс создатель описания анкетирования. Тянет за собой нужные методы
+ */
 public class DescriptionGenertor {
     File result;
     Servey servey;

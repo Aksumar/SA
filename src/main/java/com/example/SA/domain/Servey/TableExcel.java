@@ -9,11 +9,14 @@ import com.example.SA.domain.User.User;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * Объект представления таблицы, которую загрузил пользователь
+ */
 public class TableExcel {
     private ArrayList<Question> questions;
     private ArrayList<Responder> responders;
 
-    public TableExcel(String path, User user) throws IOException {
+    TableExcel(String path, User user) throws IOException {
         ExcelReader reader = new ExcelReader(path);
         responders = reader.read();
         questions = new Transfer().transfer(responders, reader.questions());
@@ -23,15 +26,7 @@ public class TableExcel {
         return questions;
     }
 
-    public void setQuestions(ArrayList<Question> questions) {
-        this.questions = questions;
-    }
-
     public ArrayList<Responder> getResponders() {
         return responders;
-    }
-
-    public void setResponders(ArrayList<Responder> responders) {
-        this.responders = responders;
     }
 }
