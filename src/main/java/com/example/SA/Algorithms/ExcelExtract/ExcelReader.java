@@ -16,7 +16,7 @@ public class ExcelReader {
     private final static DataFormatter dataFormatter = new DataFormatter();
 
     public ExcelReader(String path) {
-        filePath = new File("/home/lilia/Desktop/SA/SA/uploads/" + path);
+        filePath = new File("src/uploads/" + path);
     }
 
 
