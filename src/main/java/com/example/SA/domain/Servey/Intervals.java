@@ -35,9 +35,12 @@ public class Intervals {
             currentInterval.maxValue = minValueBefore + stepOfInterval - 1;
 
 
-            while (itr.hasNext() && Double.parseDouble(answer.getKey()) < currentInterval.maxValue) {
+            while (Double.parseDouble(answer.getKey()) <= currentInterval.maxValue) {
                 currentInterval.amountAnswers += answer.getValue();
+                if (!itr.hasNext())
+                    break;
                 answer = (Map.Entry<String, Integer>) itr.next();
+
             }
 
             minValueBefore = currentInterval.maxValue + 1;
@@ -54,9 +57,9 @@ public class Intervals {
             result += histogram.get(i).toString(i, respondersAmount);
         OneInterval maxInterval = histogram.stream().max(Comparator.comparing(interval -> interval.amountAnswers)).get();
         OneInterval minInterval = histogram.stream().min(Comparator.comparing(interval -> interval.amountAnswers)).get();
-        result += String.format("Таким образом, больше всего значений - %d -  лежат в промежутке : (%.1f -%.1f).\n",
+        result += String.format("Таким образом, больше всего значений - %d -  лежат в промежутке : (%.1f - %.1f).\n",
                 maxInterval.amountAnswers, maxInterval.minValue, maxInterval.maxValue) +
-                String.format("А меньше всего значений - %d -  лежат в промежутке : (%.1f -%.1f).\n",
+                String.format("А меньше всего значений - %d -  лежат в промежутке : (%.1f - %.1f).\n",
                         minInterval.amountAnswers, minInterval.minValue, minInterval.maxValue);
         return result;
     }

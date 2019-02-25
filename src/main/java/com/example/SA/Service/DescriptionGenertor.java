@@ -29,7 +29,7 @@ public class DescriptionGenertor {
     }
 
     public File generateDescription() {
-        try (FileWriter writer = new FileWriter(result.getAbsolutePath(), true)) {
+        try (FileWriter writer = new FileWriter(result.getAbsolutePath())) {
 
             //ЗДЕСЬ ДОЛЖНЫ ВЫЗЫВАТЬСЯ НУЖНЫЕ МЕТОДЫ
             writer.write(generateIntroduction());
@@ -44,7 +44,8 @@ public class DescriptionGenertor {
     }
 
     private String generateIntroduction() {
-        return String.format("Данное анкетировано состояло из %d вопросов. " +
+        String result = "В ходе настоящего исследования был проведен опрос " + servey.getRespondersName().get(0) + " по теме  : \"" + servey.getHeader() + "\".\n";
+        return result + String.format("Данное анкетировано состояло из %d вопросов. " +
                         "Участие в анкетировании приняло %d респондентов.\n",
                 servey.getTableToAnalize().getQuestions().size(),
                 servey.getTableToAnalize().getResponders().size());
