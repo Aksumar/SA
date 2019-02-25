@@ -45,6 +45,8 @@ public class MainController {
     public String addFile(
             @AuthenticationPrincipal User userAuthor,
             @RequestParam("file") MultipartFile file,
+            @RequestParam("header") String headerServey,
+            @RequestParam("responderType") String respType,
             Map<String, Object> model) throws IOException {
 
         if (file != null) {
@@ -58,7 +60,7 @@ public class MainController {
             File uploadedFile = new File(uploadPath + "/" + resultFileName);
             file.transferTo(uploadedFile);
 
-            Servey uploadedServey = new Servey(resultFileName, userAuthor);
+            Servey uploadedServey = new Servey(resultFileName, headerServey, respType, userAuthor);
             DescriptionGenertor dg = new DescriptionGenertor(uploadedServey, uploadedServey.getPathToResult());
             dg.generateDescription();
 

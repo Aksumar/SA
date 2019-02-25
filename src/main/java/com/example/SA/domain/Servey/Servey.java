@@ -5,6 +5,7 @@ import com.example.SA.domain.User.User;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,6 +18,12 @@ public class Servey {
     User userUploader;
 
     String pathToResult;
+
+    //Основная тема опроса
+    String header;
+
+    ArrayList<String> respondersName = new ArrayList<>();
+
     /**
      * Объект-таблицы, пришедший на анализ.
      */
@@ -30,7 +37,9 @@ public class Servey {
 
     private List<Term> terms;
 
-    public Servey(String pathToExcelUploadedFile, User user) throws IOException {
+    public Servey(String pathToExcelUploadedFile, String header, String respType, User user) throws IOException {
+        this.header = header;
+        respondersName.add(respType);
         tableToAnalize = new TableExcel(pathToExcelUploadedFile, user);
         userUploader = user;
         pathToResult = "result" + user.getUsername().toUpperCase() + ".txt";
@@ -43,6 +52,14 @@ public class Servey {
 
     public String getPathToResult() {
         return pathToResult;
+    }
+
+    public ArrayList<String> getRespondersName() {
+        return respondersName;
+    }
+
+    public String getHeader() {
+        return header;
     }
 
 }
