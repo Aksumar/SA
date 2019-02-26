@@ -35,7 +35,9 @@ public class ExcelReader {
             Iterator<Cell> cellIterator = rowIterator.next().cellIterator();
             while (cellIterator.hasNext()) {
                 Cell cell = cellIterator.next();
-                responder.answers.add(dataFormatter.formatCellValue(cell));
+//                responder.answers.add(dataFormatter.formatCellValue(cell));
+
+                responder.objectAnswers.add(new Answer(dataFormatter.formatCellValue(cell), responder)); //addition
             }
             responders.add(responder);
         }

@@ -10,15 +10,19 @@ public class Question {
     private TreeMap<String, Integer> responses = new TreeMap<>();
     private int count = 0;
 
+    ArrayList<Answer> answers = new ArrayList<>();  //addition
+
     public Question(String d) {
         description = d;
     }
 
     public void addResponse(String desc) {
         int theResponsePopularity = responses.getOrDefault(desc, 0);
-
         responses.put(desc, theResponsePopularity + 1);
         ++count;
+
+
+        answers.add(new Answer(desc, this));   //addition
     }
 
     public ArrayList<AbstractMap.SimpleEntry<String, Double>> getAnswers() {
