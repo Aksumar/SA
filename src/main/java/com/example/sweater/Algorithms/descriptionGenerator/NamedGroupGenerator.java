@@ -42,8 +42,9 @@ public class NamedGroupGenerator {
         ArrayList<Responder> result = new ArrayList<>();
 
         for (Responder r : allResps) {
-            if ( ans.popularity*100 > from && ans.popularity < to)
-                result.add(r);
+            if (r.objectAnswers.contains(ans))
+                if ( ans.popularity*100 > from && ans.popularity*100 < to)
+                    result.add(r);
         }
         return result;
     }
