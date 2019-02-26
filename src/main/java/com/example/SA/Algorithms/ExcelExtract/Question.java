@@ -10,6 +10,8 @@ public class Question {
     private int count = 0;
     public boolean isQuantitative = true;
 
+    ArrayList<Answer> answers = new ArrayList<>();  //addition
+
     public Question(String d) {
         description = d;
         isQuantitative = true;
@@ -25,9 +27,11 @@ public class Question {
         }
 
         int theResponsePopularity = responses.getOrDefault(desc, 0);
-
         responses.put(desc, theResponsePopularity + 1);
         ++count;
+
+
+        answers.add(new Answer(desc, this));   //addition
     }
 
     public ArrayList<AbstractMap.SimpleEntry<String, Double>> getAnswers() {
