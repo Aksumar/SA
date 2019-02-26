@@ -7,11 +7,11 @@ import java.util.List;
  */
 public class GroupOfQuestions {
     String nameOdGroup;
-    List<Integer> numberOfQuesions;
+    List<Integer> numberOfQuestions;
 
     public GroupOfQuestions(String nameOdGroup, List<Integer> numberOfQuesions) {
         this.nameOdGroup = nameOdGroup;
-        this.numberOfQuesions = numberOfQuesions;
+        this.numberOfQuestions = numberOfQuesions;
     }
 
     public String getNameOdGroup() {
@@ -23,10 +23,10 @@ public class GroupOfQuestions {
     }
 
     public List<Integer> getNumberOfQuesions() {
-        return numberOfQuesions;
+        return numberOfQuestions;
     }
 
     public void setNumberOfQuesions(List<Integer> numberOfQuesions) {
-        this.numberOfQuesions = numberOfQuesions;
+        this.numberOfQuestions = numberOfQuesions;
     }
 }

@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2885c598-2a24-46be-a9ff-8391d5a1496b" name="Default Changelist" comment="">
+    <list default="true" id="2885c598-2a24-46be-a9ff-8391d5a1496b" name="Default Changelist" comment="refactored NamedGroupGenerator">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/sweater/Algorithms/ExcelExtract/Answer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/sweater/Algorithms/ExcelExtract/ExcelReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/sweater/Algorithms/ExcelExtract/ExcelReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/sweater/Algorithms/ExcelExtract/Question.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/sweater/Algorithms/ExcelExtract/Question.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/sweater/Algorithms/ExcelExtract/Responder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/sweater/Algorithms/ExcelExtract/Responder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/sweater/Algorithms/ExcelExtract/Transfer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/sweater/Algorithms/ExcelExtract/Transfer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/sweater/Algorithms/descriptionGenerator/Group.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/sweater/Algorithms/descriptionGenerator/Group.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/sweater/Algorithms/descriptionGenerator/NamedGroupGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/sweater/Algorithms/descriptionGenerator/NamedGroupGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/sweater/domain/Servey/GroupOfQuestions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/sweater/domain/Servey/GroupOfQuestions.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -56,46 +64,57 @@
     <session id="-1304179373">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.open.time.3" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.closed" value="2" />
+          <entry key="project.open.time.25" value="1" />
+          <entry key="project.open.time.3" value="2" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="11" />
+          <entry key="java" value="24" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="11" />
+          <entry key="JAVA" value="24" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="19" />
-          <entry key="txt" value="24" />
+          <entry key="java" value="1293" />
+          <entry key="txt" value="62" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="19" />
-          <entry key="PLAIN_TEXT" value="24" />
+          <entry key="JAVA" value="1293" />
+          <entry key="PLAIN_TEXT" value="62" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../alex's_git/SurveyAnalysis/SurveyAnalysis-bugfix/src/descriptionGenerator/NamedGroupGenerator.java">
-          <provider selected="true" editor-type-id="text-editor" />
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/sweater/Algorithms/descriptionGenerator/NamedGroupGenerator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="110">
+              <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#456#457#0" expanded="true" />
+                <element signature="e#485#486#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/sweater/Algorithms/descriptionGenerator/Group.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/sweater/Algorithms/descriptionGenerator/QuestionGroup.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="21" lean-forward="true" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
+            <state relative-caret-position="136">
+              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -103,11 +122,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/sweater/Algorithms/descriptionGenerator/NamedGroupGenerator.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/sweater/domain/Servey/TableExcel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="314">
-              <caret line="36" column="19" selection-start-line="36" selection-start-column="19" selection-end-line="36" selection-end-column="19" />
+            <state relative-caret-position="170">
+              <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -118,8 +137,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/example/sweater/Algorithms/descriptionGenerator/BasicGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="60" lean-forward="true" selection-end-column="60" />
+            <state relative-caret-position="17">
+              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#474#475#0" expanded="true" />
@@ -133,26 +152,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/example/sweater/Algorithms/ExcelExtract/Question.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+            <state relative-caret-position="238">
+              <caret line="19" column="56" selection-start-line="19" selection-start-column="56" selection-end-line="19" selection-end-column="56" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/sweater/Algorithms/ExcelExtract/Responder.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/sweater/Algorithms/ExcelExtract/Answer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="11" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
+            <state relative-caret-position="238">
+              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/sweater/Algorithms/descriptionGenerator/QuestionGroup.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/sweater/Algorithms/ExcelExtract/ExcelReader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="38" selection-start-line="3" selection-start-column="38" selection-end-line="3" selection-end-column="38" />
+            <state relative-caret-position="527">
+              <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
             </state>
           </provider>
         </entry>
@@ -160,15 +179,31 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/example/sweater/Algorithms/ExcelExtract/Transfer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+            <state relative-caret-position="153">
+              <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../alex's_git/SurveyAnalysis/SurveyAnalysis-bugfix/src/descriptionGenerator/Group.java">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/sweater/Algorithms/ExcelExtract/Responder.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="12" column="21" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/sweater/Algorithms/descriptionGenerator/Group.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -188,7 +223,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/example/sweater/GreetingsController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/temlates/greeting.html" />
         <option value="$PROJECT_DIR$/src/main/resources/temlates/greetingPage.mustache" />
         <option value="$PROJECT_DIR$/src/main/resources/temlates/greeting.mustache" />
@@ -231,11 +265,15 @@
         <option value="$PROJECT_DIR$/src/main/java/com/example/sweater/domain/Servey/TableExcel.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/sweater/domain/User/User.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/sweater/domain/Servey/Servey.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/sweater/domain/Servey/GroupOfQuestions.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/sweater/Algorithms/descriptionGenerator/NamedGroupGenerator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/sweater/Algorithms/descriptionGenerator/Group.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/sweater/Algorithms/descriptionGenerator/QuestionGroup.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/sweater/domain/Servey/GroupOfQuestions.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/sweater/Algorithms/ExcelExtract/Question.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/sweater/Algorithms/descriptionGenerator/Group.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/sweater/Algorithms/ExcelExtract/Answer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/sweater/Algorithms/ExcelExtract/Responder.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/sweater/Algorithms/ExcelExtract/ExcelReader.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/sweater/Algorithms/ExcelExtract/Transfer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/sweater/Algorithms/descriptionGenerator/NamedGroupGenerator.java" />
       </list>
     </option>
   </component>
@@ -280,7 +318,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -344,11 +382,29 @@
               <item name="Algorithms" type="462c0819:PsiDirectoryNode" />
               <item name="ExcelExtract" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="sweater" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sweater" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="sweater" type="462c0819:PsiDirectoryNode" />
+              <item name="Controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sweater" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sweater" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="sweater" type="462c0819:PsiDirectoryNode" />
+              <item name="repos" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -359,8 +415,8 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551079837804" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551193351828" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../КПО/Seminars/Seminar_21/Seminar_21" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="restartRequiresConfirmation" value="false" />
@@ -437,7 +493,9 @@
       <workItem from="1550572902033" duration="1684000" />
       <workItem from="1550584471053" duration="4270000" />
       <workItem from="1550675053415" duration="4136000" />
-      <workItem from="1551077964790" duration="2150000" />
+      <workItem from="1551077964790" duration="7642000" />
+      <workItem from="1551092703045" duration="75000" />
+      <workItem from="1551192249781" duration="1275000" />
     </task>
     <task id="LOCAL-00001" summary="first attempt. Pages are worked">
       <created>1550680292935</created>
@@ -453,16 +511,24 @@
       <option name="project" value="LOCAL" />
       <updated>1551079822390</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="added group generators">
+      <created>1551080126885</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1551080126885</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="85346000" />
+    <option name="totallyTimeSpent" value="92188000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1613" height="873" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14919615" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20064309" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -496,7 +562,7 @@
       <window_info anchor="right" id="Bean Validation" order="9" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14919615" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19549839" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -539,7 +605,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first attempt. Pages are worked" />
     <MESSAGE value="added group generators" />
-    <option name="LAST_COMMIT_MESSAGE" value="added group generators" />
+    <MESSAGE value="refactored NamedGroupGenerator" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactored NamedGroupGenerator" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -568,9 +635,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/8.5.34/tomcat-embed-core-8.5.34-sources.jar!/org/apache/coyote/AbstractProtocol.java" />
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/8.5.34/tomcat-embed-core-8.5.34-sources.jar!/org/apache/tomcat/util/net/NioEndpoint.java" />
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/8.5.34/tomcat-embed-core-8.5.34-sources.jar!/org/apache/tomcat/util/net/SocketProcessorBase.java" />
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/userList.ftl">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="352">
@@ -714,9 +778,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -741,17 +802,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/sweater/domain/Servey/GroupOfQuestions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-          <folding>
-            <element signature="docComment;class#GroupOfQuestions#0" />
-            <element signature="method#GroupOfQuestions#0;class#GroupOfQuestions#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/sweater/Controller/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
@@ -769,37 +819,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/sweater/domain/Servey/TableExcel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/sweater/domain/Servey/Servey.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/sweater/Algorithms/ExcelExtract/ExcelReader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="45" column="40" selection-start-line="45" selection-start-column="31" selection-end-line="45" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/sweater/Algorithms/ExcelExtract/Transfer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../alex's_git/SurveyAnalysis/SurveyAnalysis-bugfix/src/descriptionGenerator/Group.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -813,10 +832,56 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/sweater/domain/Servey/Servey.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Java/src.zip!/java/util/Map.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="585" column="14" selection-start-line="585" selection-start-column="14" selection-end-line="585" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Java/src.zip!/java/util/ArrayList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4352">
+          <caret line="286" column="6" selection-start-line="286" selection-start-column="6" selection-end-line="286" selection-end-column="6" />
+          <folding>
+            <element signature="e#11079#11080#0" expanded="true" />
+            <element signature="e#11117#11118#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/sweater/domain/Servey/GroupOfQuestions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
+          <folding>
+            <element signature="docComment;class#GroupOfQuestions#0" />
+            <element signature="method#GroupOfQuestions#0;class#GroupOfQuestions#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/sweater/domain/Servey/TableExcel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/sweater/Algorithms/descriptionGenerator/BasicGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="60" lean-forward="true" selection-end-column="60" />
+        <state relative-caret-position="17">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#474#475#0" expanded="true" />
@@ -829,7 +894,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/sweater/Algorithms/descriptionGenerator/Group.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
-          <caret line="6" column="21" lean-forward="true" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -838,31 +903,57 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/sweater/Algorithms/descriptionGenerator/QuestionGroup.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="38" selection-start-line="3" selection-start-column="38" selection-end-line="3" selection-end-column="38" />
+        <state relative-caret-position="136">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/sweater/Algorithms/ExcelExtract/ExcelReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/sweater/Algorithms/ExcelExtract/Question.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        <state relative-caret-position="238">
+          <caret line="19" column="56" selection-start-line="19" selection-start-column="56" selection-end-line="19" selection-end-column="56" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/sweater/Algorithms/ExcelExtract/Responder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="11" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
+        <state relative-caret-position="204">
+          <caret line="12" column="21" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/sweater/Algorithms/ExcelExtract/Transfer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/sweater/Algorithms/ExcelExtract/Answer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/sweater/Algorithms/descriptionGenerator/NamedGroupGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="36" column="19" selection-start-line="36" selection-start-column="19" selection-end-line="36" selection-end-column="19" />
+        <state relative-caret-position="110">
+          <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#456#457#0" expanded="true" />
+            <element signature="e#485#486#0" expanded="true" />
           </folding>
         </state>
       </provider>
