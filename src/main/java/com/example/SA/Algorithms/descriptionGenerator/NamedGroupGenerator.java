@@ -14,7 +14,7 @@ public class NamedGroupGenerator {
         tablo = table;
     }
 
-    public Group getGroupByNumbers(int[] numbers, String name){
+    public Group getGroupByNumbers(int[] numbers, String groupName){
         ArrayList<Responder> allResponders = tablo.getResponders();
         ArrayList<Responder> respondersToGroup = new ArrayList<>();
 
@@ -23,10 +23,10 @@ public class NamedGroupGenerator {
                 respondersToGroup.add(allResponders.get(i));
         }
 
-        return new Group(name, respondersToGroup);
+        return new Group(groupName, respondersToGroup);
     }
 
-    public Group getResponersByAnswer(String answer, String groupName){
+    public Group getResponersByAnswer(String answer, String groupName){ //TODO: test
         ArrayList<Responder> allResps = tablo.getResponders();
         ArrayList<Responder> result = new ArrayList<>();
 
@@ -37,7 +37,7 @@ public class NamedGroupGenerator {
         return new Group(groupName, result);
     }
 
-    public ArrayList<Responder> getRespondersByPercentage(int from, int to, Answer ans){
+    public ArrayList<Responder> getRespondersByPercentage(int from, int to, Answer ans){ //TODO: test
         ArrayList<Responder> allResps = tablo.getResponders();
         ArrayList<Responder> result = new ArrayList<>();
 
@@ -47,6 +47,29 @@ public class NamedGroupGenerator {
                     result.add(r);
         }
         return result;
+    }
+
+    public Group createMetaGroup(String[] answers, String groupName){ //TODO: test
+        ArrayList<Responder> allResponders = tablo.getResponders();
+        ArrayList<Responder> respondersToGroup = new ArrayList<>();
+
+        for (Responder r : allResponders) {
+            boolean okay = true;
+            for (String answer : answers)
+                if (!r.answeredThis(answer))
+                    okay = false;
+
+                if (okay)
+                    respondersToGroup.add(r);
+        }
+        return new Group(groupName, respondersToGroup);
+    }
+
+    public static String tellMeAbout(Group group){
+        StringBuilder result = new StringBuilder("Группа " + group.name);
+
+
+        return result.toString();
     }
 }
 
