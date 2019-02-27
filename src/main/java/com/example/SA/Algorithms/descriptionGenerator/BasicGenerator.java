@@ -11,7 +11,7 @@ import java.util.Objects;
 import java.util.Random;
 import java.util.Scanner;
 
-import com.example.sweater.Algorithms.ExcelExtract.Question;
+import com.example.SA.Algorithms.ExcelExtract.Question;
 
 public class BasicGenerator {
     static Random r = new Random();
