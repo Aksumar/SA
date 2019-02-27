@@ -6,6 +6,7 @@ public class Question {
     public final String description;
     private TreeMap<String, Integer> responses = new TreeMap<>();
     private int count = 0;
+    public boolean isQuantitative;
 
     public Question(String d) {
         description = d;

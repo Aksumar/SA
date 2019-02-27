@@ -3,6 +3,7 @@ package com.example.SA.domain.Servey;
 import com.example.SA.Algorithms.ExcelExtract.Question;
 
 import java.util.*;
+import java.util.Map.Entry;
 
 public class Intervals {
     Question qToAnalyse;
@@ -27,7 +28,7 @@ public class Intervals {
         histogram = new ArrayList<OneInterval>();
 
         Double minValueBefore = minValue;
-        Iterator itr = question.getResponses().entrySet().iterator();
+        Iterator<Entry<String, Integer>> itr = question.getResponses().entrySet().iterator();
         Map.Entry<String, Integer> answer = (Map.Entry<String, Integer>) itr.next();
         for (int i = 0; i < amountOfIntervals; ++i) {
             OneInterval currentInterval = new OneInterval();

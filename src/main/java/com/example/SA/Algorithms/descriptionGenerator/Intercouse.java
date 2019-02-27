@@ -1,4 +1,4 @@
-package com.example.sweater.Algorithms.descriptionGenerator;
+package com.example.SA.Algorithms.descriptionGenerator;
 
 public class Intercouse {
 }
