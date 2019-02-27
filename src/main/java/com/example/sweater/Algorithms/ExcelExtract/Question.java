@@ -6,7 +6,7 @@ import java.util.Comparator;
 import java.util.TreeMap;
 
 public class Question {
-    public  String description;
+    public final String description;
     private TreeMap<String, Integer> responses = new TreeMap<>();
     private int count = 0;
 
