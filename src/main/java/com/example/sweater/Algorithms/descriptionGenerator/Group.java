@@ -19,8 +19,8 @@ public class Group{
         int num = answers.size();
         StringBuilder output = new StringBuilder("На вопрос \"");
         output.append(q.description);
-        output.append("\" группа" + this.name);
-        output.append(" наиболее часто (" + answers.get(num-1).getValue()*100 + "%)" +
+        output.append("\" группа " + this.name);
+        output.append(" чаще всего (" + answers.get(num-1).getValue()*100 + "%)" +
                 " отвечала так: " + answers.get(num-1).getKey() + ".");
 
         output.append("Наименее популярным ответом оказался вариант \"" + answers.get(0).getKey() + "\"." +
