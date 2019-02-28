@@ -12,6 +12,7 @@ public class Question {
 
     public Question(String d) {
         description = d;
+        isQuantitative = true;
     }
 
     public void addResponse(String desc) {

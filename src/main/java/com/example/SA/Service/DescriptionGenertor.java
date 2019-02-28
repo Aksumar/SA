@@ -3,6 +3,8 @@ package com.example.SA.Service;
 import com.example.SA.Algorithms.ExcelExtract.Question;
 import com.example.SA.Algorithms.descriptionGenerator.BasicGenerator;
 import com.example.SA.domain.Servey.Intervals;
+import com.example.SA.Algorithms.descriptionGenerator.Intercouse;
+import com.example.SA.Algorithms.descriptionGenerator.Intervals;
 import com.example.SA.domain.Servey.Servey;
 import com.example.SA.domain.Servey.TableExcel;
 
@@ -49,6 +51,7 @@ public class DescriptionGenertor {
             writer.write(System.lineSeparator());
             writeMinMax(writer, 0.3);
 
+            writer.write(generateQuestionComparison(servey.getTableToAnalize().getQuestions().get(7), servey.getTableToAnalize().getQuestions().get(9)));
             writer.flush();
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
@@ -190,5 +193,10 @@ public class DescriptionGenertor {
             sBuilder.append(".").append(System.lineSeparator());
         }
         return sBuilder.toString();
+    }
+
+
+    private String generateQuestionComparison(Question question1, Question question2) {
+        return Intercouse.doIntercourse(question1, question2);
     }
 }
