@@ -9,6 +9,7 @@ public class Transfer {
                 questions.get(k).addResponse(responder.answers.get(k));
             }
         }
+
         return questions;
     }
 }

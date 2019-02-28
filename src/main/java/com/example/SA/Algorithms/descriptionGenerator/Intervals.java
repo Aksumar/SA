@@ -1,4 +1,4 @@
-package com.example.SA.domain.Servey;
+package com.example.SA.Algorithms.descriptionGenerator;
 
 import com.example.SA.Algorithms.ExcelExtract.Question;
 
@@ -14,12 +14,21 @@ public class Intervals {
 
     public Intervals(Question question, int respondersAmount) {
         qToAnalyse = question;
+
+        TreeMap<Double, Integer> doubleIntegerTreeMap = new TreeMap<>();
+        Iterator<Entry<String, Integer>> itr = question.getResponses().entrySet().iterator();
+
+        for (int i = 0; i < qToAnalyse.getResponses().size(); ++i) {
+            Map.Entry<String, Integer> answer = itr.next();
+            doubleIntegerTreeMap.put(Double.parseDouble(answer.getKey()), answer.getValue());
+        }
+
         this.respondersAmount = respondersAmount;
 
         //пределяем шаг описания по формуле Стейджерса
         amountOfIntervals = 1 + (int) (3.322 * Math.floor(Math.log10(question.getCountResponce())));
-        double minValue = Double.parseDouble(question.getResponses().firstKey());
-        double maxValue = Double.parseDouble(question.getResponses().lastKey());
+        double minValue = doubleIntegerTreeMap.firstKey();
+        double maxValue = doubleIntegerTreeMap.lastKey();
 
         //количество значений в шаге
         stepOfInterval = (int) Math.ceil((maxValue - minValue) / amountOfIntervals);
@@ -28,20 +37,19 @@ public class Intervals {
         histogram = new ArrayList<OneInterval>();
 
         Double minValueBefore = minValue;
-        Iterator<Entry<String, Integer>> itr = question.getResponses().entrySet().iterator();
-        Map.Entry<String, Integer> answer = (Map.Entry<String, Integer>) itr.next();
+        Iterator<Entry<Double, Integer>> it = doubleIntegerTreeMap.entrySet().iterator();
+        Map.Entry<Double, Integer> answer = it.next();
         for (int i = 0; i < amountOfIntervals; ++i) {
             OneInterval currentInterval = new OneInterval();
             currentInterval.minValue = minValueBefore;
             currentInterval.maxValue = minValueBefore + stepOfInterval - 1;
 
 
-            while (Double.parseDouble(answer.getKey()) <= currentInterval.maxValue) {
+            while (answer.getKey() <= currentInterval.maxValue) {
                 currentInterval.amountAnswers += answer.getValue();
-                if (!itr.hasNext())
+                if (!it.hasNext())
                     break;
-                answer = (Map.Entry<String, Integer>) itr.next();
-
+                answer = it.next();
             }
 
             minValueBefore = currentInterval.maxValue + 1;
@@ -52,7 +60,7 @@ public class Intervals {
 
     @Override
     public String toString() {
-        String result = String.format("При следующем описании вопроса <%s>\n была использована формула Стейджерса с шагом %f\n" +
+        String result = String.format("При следующем описании вопроса <%s>\n была использована формула Стейджерса с шагом %.1f\n" +
                 " и кол-вом интервалов %d.\n", qToAnalyse.description, stepOfInterval, amountOfIntervals);
         for (int i = 0; i < amountOfIntervals; ++i)
             result += histogram.get(i).toString(i, respondersAmount);
