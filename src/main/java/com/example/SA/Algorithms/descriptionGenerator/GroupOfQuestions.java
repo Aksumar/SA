@@ -1,4 +1,4 @@
-package com.example.sweater.domain.Servey;
+package com.example.SA.Algorithms.descriptionGenerator;
 
 import java.util.List;
 

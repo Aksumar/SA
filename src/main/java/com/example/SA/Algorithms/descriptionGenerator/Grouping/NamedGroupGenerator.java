@@ -1,10 +1,9 @@
-package com.example.sweater.Algorithms.descriptionGenerator;
+package com.example.SA.Algorithms.descriptionGenerator.Grouping;
 
-import com.example.sweater.Algorithms.ExcelExtract.Answer;
-import com.example.sweater.Algorithms.ExcelExtract.Responder;
-import com.example.sweater.domain.Servey.TableExcel;
+import com.example.SA.Algorithms.ExcelExtract.Answer;
+import com.example.SA.Algorithms.ExcelExtract.Responder;
+import com.example.SA.domain.Servey.TableExcel;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class NamedGroupGenerator {
