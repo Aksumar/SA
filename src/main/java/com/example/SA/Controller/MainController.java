@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.FileSystemException;
 import java.util.Map;
 import java.util.UUID;
 
@@ -45,14 +46,16 @@ public class MainController {
     public String addFile(
             @AuthenticationPrincipal User userAuthor,
             @RequestParam("file") MultipartFile file,
-            @RequestParam("header") String headerServey,
+            @RequestParam("header") String headerSurvey,
             @RequestParam("responderType") String respType,
             Map<String, Object> model) throws IOException {
 
         if (file != null) {
             File uploadDir = new File(uploadPath);
             if (!uploadDir.exists())
-                uploadDir.mkdir();
+                if (!uploadDir.mkdir()) {
+                    throw new FileSystemException("Can not make dir " + uploadPath);
+                }
 
             String uuidFile = UUID.randomUUID().toString();
             String resultFileName = uuidFile + "." + file.getOriginalFilename();
@@ -60,7 +63,7 @@ public class MainController {
             File uploadedFile = new File(uploadPath + "/" + resultFileName);
             file.transferTo(uploadedFile);
 
-            Servey uploadedServey = new Servey(resultFileName, headerServey, respType, userAuthor);
+            Servey uploadedServey = new Servey(resultFileName, headerSurvey, respType, userAuthor);
             DescriptionGenertor dg = new DescriptionGenertor(uploadedServey, uploadedServey.getPathToResult());
             dg.generateDescription();
 

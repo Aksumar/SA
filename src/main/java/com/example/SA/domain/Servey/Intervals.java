@@ -25,11 +25,11 @@ public class Intervals {
         stepOfInterval = (int) Math.ceil((maxValue - minValue) / amountOfIntervals);
 
         //коллекция интервалов
-        histogram = new ArrayList<OneInterval>();
+        histogram = new ArrayList<>();
 
         Double minValueBefore = minValue;
         Iterator<Entry<String, Integer>> itr = question.getResponses().entrySet().iterator();
-        Map.Entry<String, Integer> answer = (Map.Entry<String, Integer>) itr.next();
+        Map.Entry<String, Integer> answer = itr.next();
         for (int i = 0; i < amountOfIntervals; ++i) {
             OneInterval currentInterval = new OneInterval();
             currentInterval.minValue = minValueBefore;
@@ -40,7 +40,7 @@ public class Intervals {
                 currentInterval.amountAnswers += answer.getValue();
                 if (!itr.hasNext())
                     break;
-                answer = (Map.Entry<String, Integer>) itr.next();
+                answer = itr.next();
 
             }
 

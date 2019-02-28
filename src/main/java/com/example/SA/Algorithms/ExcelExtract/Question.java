@@ -8,17 +8,19 @@ public class Question {
 
     private TreeMap<String, Integer> responses = new TreeMap<>();
     private int count = 0;
-    public boolean isQuantitative;
+    public boolean isQuantitative = true;
 
     public Question(String d) {
         description = d;
     }
 
     public void addResponse(String desc) {
-        try {
-            Double.parseDouble(desc);
-        } catch (Exception e) {
-            isQuantitative = false;
+        if (isQuantitative) {
+            try {
+                Double.parseDouble(desc);
+            } catch (Exception e) {
+                isQuantitative = false;
+            }
         }
 
         int theResponsePopularity = responses.getOrDefault(desc, 0);
@@ -26,7 +28,6 @@ public class Question {
         responses.put(desc, theResponsePopularity + 1);
         ++count;
     }
-
 
     public ArrayList<AbstractMap.SimpleEntry<String, Double>> getAnswers() {
         ArrayList<AbstractMap.SimpleEntry<String, Double>> answerSet = new ArrayList<>();
@@ -44,7 +45,6 @@ public class Question {
         this.count = countResponce;
     }
 
-
     public TreeMap<String, Integer> getResponses() {
         return responses;
     }
@@ -52,6 +52,5 @@ public class Question {
     public void setResponses(TreeMap<String, Integer> responses) {
         this.responses = responses;
     }
-
 
 }
