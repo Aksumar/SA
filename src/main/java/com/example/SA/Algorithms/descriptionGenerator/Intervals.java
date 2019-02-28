@@ -26,7 +26,7 @@ public class Intervals {
         this.respondersAmount = respondersAmount;
 
         //пределяем шаг описания по формуле Стейджерса
-        amountOfIntervals = 1 + (int) (3.322 * Math.floor(Math.log10(question.getCountResponce())));
+        amountOfIntervals = 1 + (int) (3.322 * Math.floor(Math.log10(question.getCountResponse())));
         double minValue = doubleIntegerTreeMap.firstKey();
         double maxValue = doubleIntegerTreeMap.lastKey();
 

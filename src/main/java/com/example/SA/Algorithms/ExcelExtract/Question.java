@@ -8,16 +8,13 @@ public class Question {
 
     private TreeMap<String, Integer> responses = new TreeMap<>();
     private int count = 0;
-    public boolean isQuantitative = true;
-
-    ArrayList<Answer> answers = new ArrayList<>();  //addition
+    private ArrayList<Answer> answers = new ArrayList<>();  //addition
 
     public Question(String d) {
         description = d;
-        isQuantitative = true;
     }
 
-    public void addResponse(String desc) {
+    void addResponse(String desc) {
         if (isQuantitative) {
             try {
                 Double.parseDouble(desc);
@@ -42,12 +39,8 @@ public class Question {
         return answerSet;
     }
 
-    public int getCountResponce() {
+    public int getCountResponse() {
         return count;
-    }
-
-    public void setCountResponce(int countResponce) {
-        this.count = countResponce;
     }
 
     public TreeMap<String, Integer> getResponses() {

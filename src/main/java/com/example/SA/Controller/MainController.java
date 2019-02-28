@@ -1,7 +1,7 @@
 package com.example.SA.Controller;
 
-import com.example.SA.Service.DescriptionGenertor;
-import com.example.SA.domain.Servey.Servey;
+import com.example.SA.Service.DescriptionGenerator;
+import com.example.SA.domain.Servey.Survey;
 import com.example.SA.domain.User.User;
 import com.example.SA.repos.MessageRepoTODELETE;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,8 +63,8 @@ public class MainController {
             File uploadedFile = new File(uploadPath + "/" + resultFileName);
             file.transferTo(uploadedFile);
 
-            Servey uploadedServey = new Servey(resultFileName, headerSurvey, respType, userAuthor);
-            DescriptionGenertor dg = new DescriptionGenertor(uploadedServey, uploadedServey.getPathToResult());
+            Survey uploadedSurvey = new Survey(resultFileName, headerSurvey, respType, userAuthor);
+            DescriptionGenerator dg = new DescriptionGenerator(uploadedSurvey, uploadedSurvey.getPathToResult());
             dg.generateDescription();
 
             uploadedFile.delete();

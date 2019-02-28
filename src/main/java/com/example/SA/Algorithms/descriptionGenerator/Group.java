@@ -1,7 +1,7 @@
-package com.example.sweater.Algorithms.descriptionGenerator;
+package com.example.SA.Algorithms.descriptionGenerator;
 
-import com.example.sweater.Algorithms.ExcelExtract.Question;
-import com.example.sweater.Algorithms.ExcelExtract.Responder;
+import com.example.SA.Algorithms.ExcelExtract.Question;
+import com.example.SA.Algorithms.ExcelExtract.Responder;
 
 import java.util.AbstractMap;
 import java.util.ArrayList;

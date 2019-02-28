@@ -41,7 +41,7 @@ public class UserService implements UserDetailsService {
         if (!StringUtils.isEmpty(user.getEmail())) {
             String message = String.format(
                     "Hello, %s!\n" +
-                            "Welcome to ServeyAnaliser. Your activation link : http://localhost:8080/activate/%s",
+                            "Welcome to SurveyAnalyzer. Your activation link : http://localhost:8080/activate/%s",
                     user.getUsername(),
                     user.getActivationCode()
             );
