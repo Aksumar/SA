@@ -14,14 +14,14 @@
             <input type="text" name="password" placeholder="Password"/>
         </div>
     </div>
-<#if !isRegisterForm>
-    <div class="form-group row">
-        <label class="col-sm-2 col-form-label">User email : </label>
-        <div class="col-sm-6">
-            <input type="text" name="email" placeholder="userMail@mail.com"/>
-        </div>
-    </div>
-</#if>
+<#--<#if !isRegisterForm>-->
+    <#--<div class="form-group row">-->
+        <#--<label class="col-sm-2 col-form-label">User email : </label>-->
+        <#--<div class="col-sm-6">-->
+            <#--<input type="text" name="email" placeholder="userMail@mail.com"/>-->
+        <#--</div>-->
+    <#--</div>-->
+<#--</#if>-->
 
     <input type="hidden" name="_csrf" value="${_csrf.token}"/>
     <button type="submit" class="btn btn-primary"><#if isRegisterForm>Create<#else> Sign In</#if></button>

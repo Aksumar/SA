@@ -17,8 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 @Controller
 public class MainController {
@@ -37,7 +36,6 @@ public class MainController {
 
     @GetMapping("/main")
     public String main(Model model) {
-
         return "main";
     }
 
@@ -46,7 +44,10 @@ public class MainController {
             @AuthenticationPrincipal User userAuthor,
             @RequestParam("file") MultipartFile file,
             @RequestParam("header") String headerServey,
+            @RequestParam Map<String, String> form,
             @RequestParam("responderType") String respType,
+            @RequestParam(value = "1question", required = false, defaultValue = "0") String question1,
+            @RequestParam(value = "2question", required = false, defaultValue = "0") String question2,
             Map<String, Object> model) throws IOException {
 
         if (file != null) {
@@ -61,7 +62,17 @@ public class MainController {
             file.transferTo(uploadedFile);
 
             Servey uploadedServey = new Servey(resultFileName, headerServey, respType, userAuthor);
-            DescriptionGenertor dg = new DescriptionGenertor(uploadedServey, uploadedServey.getPathToResult());
+
+            boolean intervals = form.keySet().contains("intervals");
+            boolean minMax = form.keySet().contains("intervals");
+            boolean all = form.keySet().contains("all");
+            boolean compare = form.keySet().contains("compare");
+
+            int qNumber1 = Integer.parseInt(question1);
+            int qNumber2 = Integer.parseInt(question2);
+
+
+            DescriptionGenertor dg = new DescriptionGenertor(uploadedServey, uploadedServey.getPathToResult(), intervals, minMax, all, compare, qNumber1, qNumber2);
             dg.generateDescription();
 
             uploadedFile.delete();

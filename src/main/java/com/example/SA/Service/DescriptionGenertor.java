@@ -19,14 +19,30 @@ public class DescriptionGenertor {
     Servey servey;
     String pathToResult;
     BasicGenerator bg;
+    boolean allAnswers;
+    boolean minMax;
+    boolean intervals;
+    boolean compare;
+    int q1;
+    int q2;
 
-    public DescriptionGenertor(Servey serveyToAnalise, String pathToResult) throws IOException {
+    public DescriptionGenertor(Servey serveyToAnalise, String pathToResult, boolean intervals,
+                               boolean minMax, boolean all, boolean compare,
+                               int questionToCompare1, int questionTiCompare2) throws IOException {
         servey = serveyToAnalise;
         TableExcel tableToAnalize = servey.getTableToAnalize();
         this.pathToResult = pathToResult;
 
         result = new File(pathToResult);
         bg = new BasicGenerator();
+
+        this.allAnswers = all;
+        this.minMax = minMax;
+        this.intervals = intervals;
+        this.compare = compare;
+        q1 = questionToCompare1;
+        q2 = questionTiCompare2;
+
         if (result.createNewFile())
             System.out.println("Результирующий файл успешно создан");
         else
@@ -36,11 +52,19 @@ public class DescriptionGenertor {
     public File generateDescription() {
         try (FileWriter writer = new FileWriter(result.getAbsolutePath())) {
 
-            //ЗДЕСЬ ДОЛЖНЫ ВЫЗЫВАТЬСЯ НУЖНЫЕ МЕТОДЫ
             writer.write(generateIntroduction());
-           // writer.write(generateSturges());
 
-            writer.write(generateQuestionComparison(servey.getTableToAnalize().getQuestions().get(7), servey.getTableToAnalize().getQuestions().get(9)));
+            //ЗДЕСЬ ДОЛЖНЫ ВЫЗЫВАТЬСЯ НУЖНЫЕ МЕТОДЫ
+            for (Question q : servey.getTableToAnalize().getQuestions()
+            ) {
+                if (intervals)
+                    writer.write(generateSturges());
+            }
+
+            if (compare)
+                writer.write(generateQuestionComparison(servey.getTableToAnalize().getQuestions().get(q1 - 1),
+                        servey.getTableToAnalize().getQuestions().get(q2 - 1)));
+
             writer.flush();
         } catch (IOException ex) {
             System.out.println(ex.getMessage());

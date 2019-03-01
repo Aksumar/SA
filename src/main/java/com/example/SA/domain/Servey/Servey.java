@@ -35,7 +35,6 @@ public class Servey {
      */
     private List<Integer> importantQuestions;
 
-    private List<Term> terms;
 
     public Servey(String pathToExcelUploadedFile, String header, String respType, User user) throws IOException {
         this.header = header;
