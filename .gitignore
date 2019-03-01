@@ -1,0 +1,6 @@
+*.class
+.idea/
+*.vscode
+.settings/
+target/
+.classpath
