@@ -26,7 +26,7 @@ public class Intervals {
         this.respondersAmount = respondersAmount;
 
         //пределяем шаг описания по формуле Стейджерса
-        amountOfIntervals = 1 + (int) (3.322 * Math.floor(Math.log10(question.getCountResponse())));
+        amountOfIntervals = 1 + (int) (3.322 * Math.floor(Math.log10(question.getCountResponce())));
         double minValue = doubleIntegerTreeMap.firstKey();
         double maxValue = doubleIntegerTreeMap.lastKey();
 
@@ -34,7 +34,7 @@ public class Intervals {
         stepOfInterval = (int) Math.ceil((maxValue - minValue) / amountOfIntervals);
 
         //коллекция интервалов
-        histogram = new ArrayList<>();
+        histogram = new ArrayList<OneInterval>();
 
         Double minValueBefore = minValue;
         Iterator<Entry<Double, Integer>> it = doubleIntegerTreeMap.entrySet().iterator();

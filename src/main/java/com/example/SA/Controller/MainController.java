@@ -1,7 +1,7 @@
 package com.example.SA.Controller;
 
-import com.example.SA.Service.DescriptionGenerator;
-import com.example.SA.domain.Servey.Survey;
+import com.example.SA.Service.DescriptionGenertor;
+import com.example.SA.domain.Servey.Servey;
 import com.example.SA.domain.User.User;
 import com.example.SA.repos.MessageRepoTODELETE;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.FileSystemException;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 @Controller
 public class MainController {
@@ -38,7 +36,6 @@ public class MainController {
 
     @GetMapping("/main")
     public String main(Model model) {
-
         return "main";
     }
 
@@ -46,8 +43,11 @@ public class MainController {
     public String addFile(
             @AuthenticationPrincipal User userAuthor,
             @RequestParam("file") MultipartFile file,
-            @RequestParam("header") String headerSurvey,
+            @RequestParam("header") String headerServey,
+            @RequestParam Map<String, String> form,
             @RequestParam("responderType") String respType,
+            @RequestParam(value = "1question", required = false, defaultValue = "0") String question1,
+            @RequestParam(value = "2question", required = false, defaultValue = "0") String question2,
             Map<String, Object> model) throws IOException {
 
         if (file != null) {
@@ -63,8 +63,18 @@ public class MainController {
             File uploadedFile = new File(uploadPath + "/" + resultFileName);
             file.transferTo(uploadedFile);
 
-            Survey uploadedSurvey = new Survey(resultFileName, headerSurvey, respType, userAuthor);
-            DescriptionGenerator dg = new DescriptionGenerator(uploadedSurvey, uploadedSurvey.getPathToResult());
+            Servey uploadedServey = new Servey(resultFileName, headerServey, respType, userAuthor);
+
+            boolean intervals = form.keySet().contains("intervals");
+            boolean minMax = form.keySet().contains("intervals");
+            boolean all = form.keySet().contains("all");
+            boolean compare = form.keySet().contains("compare");
+
+            int qNumber1 = Integer.parseInt(question1);
+            int qNumber2 = Integer.parseInt(question2);
+
+
+            DescriptionGenertor dg = new DescriptionGenertor(uploadedServey, uploadedServey.getPathToResult(), intervals, minMax, all, compare, qNumber1, qNumber2);
             dg.generateDescription();
 
             uploadedFile.delete();

@@ -8,7 +8,8 @@ public class Question {
 
     private TreeMap<String, Integer> responses = new TreeMap<>();
     private int count = 0;
-    private ArrayList<Answer> answers = new ArrayList<>();  //addition
+
+    ArrayList<Answer> answers = new ArrayList<>();  //addition
 
     public Question(String d) {
         description = d;
@@ -30,6 +31,7 @@ public class Question {
 
         answers.add(new Answer(desc, this));   //addition
     }
+
 
     public ArrayList<AbstractMap.SimpleEntry<String, Double>> getAnswers() {
         ArrayList<AbstractMap.SimpleEntry<String, Double>> answerSet = new ArrayList<>();
