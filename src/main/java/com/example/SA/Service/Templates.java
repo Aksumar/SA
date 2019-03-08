@@ -63,7 +63,7 @@ public class Templates {
         // Error
         return "";
     }
-
+ 
     private static void replace(StringBuilder sb, String from, String to) {
         int index = sb.indexOf(from);
         if (index != -1) {
