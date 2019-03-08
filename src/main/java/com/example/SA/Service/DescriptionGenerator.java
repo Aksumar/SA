@@ -22,6 +22,7 @@ public class DescriptionGenerator {
     private File result;
     private Survey survey;
     private static final Random rnd = new Random();
+    private final Templates templates = new Templates(new File("C:\\Users\\alexr\\IdeaProjects\\Bricks"));
 
     public DescriptionGenerator(Survey surveyToAnalyze, String pathToResult) throws IOException {
         survey = surveyToAnalyze;
@@ -115,11 +116,11 @@ public class DescriptionGenerator {
         ArrayList<AbstractMap.SimpleEntry<String, Double>> answers = question.getAnswers();
 
         AbstractMap.SimpleEntry<String, Double> firstEntry = answers.get(0);
-        sBuilder.append(String.format(Templates.getNext(Templates.Type.ALL), firstEntry.getValue() * 100, question.description, firstEntry.getKey()));
+        sBuilder.append(String.format(templates.getNext(Templates.Type.ALL), firstEntry.getValue() * 100, question.description, firstEntry.getKey()));
 
         for (int i = 1; i < answers.size(); ++i) {
             AbstractMap.SimpleEntry<String, Double> entry = answers.get(i);
-            sBuilder.append(String.format(Templates.getNext(Templates.Type.MIDDLE), entry.getValue() * 100, entry.getKey()));
+            sBuilder.append(String.format(templates.getNext(Templates.Type.MIDDLE), entry.getValue() * 100, entry.getKey()));
         }
 
         sBuilder.append(". ").append(System.lineSeparator());
@@ -145,24 +146,24 @@ public class DescriptionGenerator {
             // "На вопрос как я провел лето большинство (60%) опрошенных указали дома, 30%
             // ответили на курорте, 10% отметили на даче.";
             AbstractMap.SimpleEntry<String, Double> highest = answers.get(answers.size() - 1);
-            String s = Templates.getNext(Templates.Type.MAX);
+            String s = templates.getNext(Templates.Type.MAX);
             sBuilder.append(String.format(s, highest.getValue() * 100, question.description, highest.getKey()));
 
 
             for (int i = answers.size() - 2; i < answers.size() - offset; ++i) {
                 AbstractMap.SimpleEntry<String, Double> entry = answers.get(i);
-                sBuilder.append(String.format(Templates.getNext(Templates.Type.MIDDLE), entry.getValue() * 100, entry.getKey()));
+                sBuilder.append(String.format(templates.getNext(Templates.Type.MIDDLE), entry.getValue() * 100, entry.getKey()));
                 sBuilder.append(" ");
             }
             sBuilder.append(". ").append(System.lineSeparator());
 
             AbstractMap.SimpleEntry<String, Double> lowest = answers.get(offset);
-            s = Templates.getNext(Templates.Type.MIN);
+            s = templates.getNext(Templates.Type.MIN);
             sBuilder.append(String.format(s, lowest.getValue() * 100, question.description, lowest.getKey()));
 
             for (int i = offset - 1; i >= 0; --i) {
                 AbstractMap.SimpleEntry<String, Double> entry = answers.get(i);
-                sBuilder.append(String.format(Templates.getNext(Templates.Type.MIDDLE), entry.getValue() * 100, entry.getKey()));
+                sBuilder.append(String.format(templates.getNext(Templates.Type.MIDDLE), entry.getValue() * 100, entry.getKey()));
                 sBuilder.append(" ");
             }
             sBuilder.append(". ").append(System.lineSeparator());

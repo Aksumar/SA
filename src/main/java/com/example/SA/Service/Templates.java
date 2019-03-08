@@ -13,12 +13,12 @@ public class Templates {
 
     ////////////////////////////////
     private static final int
-        ACTIONS = 0,
-        ACTORS = 1,
-        LRATE = 2,
-        HRATE = 3,
-        DESCALL = 4,
-        MIDDLE = 5;
+            ACTIONS = 0,
+            ACTORS = 1,
+            DESCALL = 2,
+            HRATE = 3,
+            LRATE = 4,
+            MIDDLE = 5;
     private TemplateBrick[] templates = new TemplateBrick[6];
     ////////////////////////////////
 
@@ -26,13 +26,13 @@ public class Templates {
             Arrays.asList(
                     "actions",
                     "actors",
-                    "lowRate",
-                    "highRate",
                     "describeAll",
+                    "highRate",
+                    "lowRate",
                     "middle"
             );
 
-    private Templates(File directory) {
+    Templates(File directory) {
         if (!directory.isDirectory())
             throw new IllegalArgumentException();
 
@@ -63,7 +63,7 @@ public class Templates {
         // Error
         return "";
     }
- 
+
     private static void replace(StringBuilder sb, String from, String to) {
         int index = sb.indexOf(from);
         if (index != -1) {
@@ -118,5 +118,10 @@ class TemplateBrick {
         }
 
         return optionsUnused.remove(rnd.nextInt(optionsUnused.size()));
+    }
+
+    @Override
+    public String toString() {
+        return Arrays.toString(options.toArray());
     }
 }
