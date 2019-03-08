@@ -1,6 +1,6 @@
 package com.example.SA.Controller;
 
-import com.example.SA.Service.DescriptionGenertor;
+import com.example.SA.Service.DescriptionGenerator;
 import com.example.SA.domain.Servey.Servey;
 import com.example.SA.domain.User.User;
 import com.example.SA.repos.MessageRepoTODELETE;
@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.FileSystemException;
 import java.util.*;
 
 @Controller
@@ -66,15 +67,18 @@ public class MainController {
             Servey uploadedServey = new Servey(resultFileName, headerServey, respType, userAuthor);
 
             boolean intervals = form.keySet().contains("intervals");
-            boolean minMax = form.keySet().contains("intervals");
+            boolean minMax = form.keySet().contains("minMax");
             boolean all = form.keySet().contains("all");
             boolean compare = form.keySet().contains("compare");
 
-            int qNumber1 = Integer.parseInt(question1);
-            int qNumber2 = Integer.parseInt(question2);
+            int qNumber1 = -1, qNumber2 = -1;
+            if (compare) {
+                qNumber1 = Integer.parseInt(question1);
+                qNumber2 = Integer.parseInt(question2);
+            }
 
 
-            DescriptionGenertor dg = new DescriptionGenertor(uploadedServey, uploadedServey.getPathToResult(), intervals, minMax, all, compare, qNumber1, qNumber2);
+            DescriptionGenerator dg = new DescriptionGenerator(uploadedServey, uploadedServey.getPathToResult(), intervals, minMax, all, compare, qNumber1, qNumber2);
             dg.generateDescription();
 
             uploadedFile.delete();

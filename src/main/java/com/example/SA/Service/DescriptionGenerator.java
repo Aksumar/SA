@@ -1,11 +1,9 @@
 package com.example.SA.Service;
 
 import com.example.SA.Algorithms.ExcelExtract.Question;
-import com.example.SA.Algorithms.descriptionGenerator.BasicGenerator;
 import com.example.SA.Algorithms.descriptionGenerator.Intercouse;
 import com.example.SA.Algorithms.descriptionGenerator.Intervals;
-import com.example.SA.domain.Servey.Survey;
-import com.example.SA.domain.Servey.TableExcel;
+import com.example.SA.domain.Servey.Servey;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -13,24 +11,50 @@ import java.io.IOException;
 import java.nio.file.FileSystemException;
 import java.util.AbstractMap;
 import java.util.ArrayList;
-import java.util.Random;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 /**
  * Основной класс создатель описания анкетирования. Тянет за собой нужные методы
  */
 public class DescriptionGenerator {
     private File result;
-    private Survey survey;
-    private static final Random rnd = new Random();
+    private Servey survey;
+    private String pathToResult;
+    private boolean allAnswers;
+    private boolean minMax;
+    private boolean intervals;
+    private boolean compare;
+    private int q1;
+    private int q2;
+
     private final Templates templates = new Templates(new File("C:\\Users\\alexr\\IdeaProjects\\Bricks"));
 
-    public DescriptionGenerator(Survey surveyToAnalyze, String pathToResult) throws IOException {
+    public DescriptionGenerator(Servey serveyToAnalise, String pathToResult, boolean intervals,
+                                boolean minMax, boolean all, boolean compare) throws IOException {
+        this(serveyToAnalise, pathToResult, intervals, minMax, all, compare, -1, -1);
+    }
+
+    public DescriptionGenerator(Servey surveyToAnalyze, String pathToResult, boolean intervals,
+                                boolean minMax, boolean all, boolean compare,
+                                int questionToCompare1, int questionTiCompare2) throws IOException {
         survey = surveyToAnalyze;
+        this.pathToResult = pathToResult;
+
+        result = new File(pathToResult);
+
+        this.allAnswers = all;
+        this.minMax = minMax;
+        this.intervals = intervals;
+        this.compare = compare;
+        q1 = questionToCompare1;
+        q2 = questionTiCompare2;
 
         result = new File(pathToResult);
         if (result.exists()) {
             if (!result.delete())
-                throw new FileSystemException("Can not delete old report " + pathToResult);
+                System.out.println("Не удалось удалить старый файл отчета");
         }
         if (result.createNewFile())
             System.out.println("Результирующий файл успешно создан");
@@ -40,17 +64,22 @@ public class DescriptionGenerator {
 
     public File generateDescription() {
         try (FileWriter writer = new FileWriter(result.getAbsolutePath())) {
-
-            // ЗДЕСЬ ДОЛЖНЫ ВЫЗЫВАТЬСЯ НУЖНЫЕ МЕТОДЫ
             writer.write(generateIntroduction());
-            writer.write(generateSturges());
-            writeFullDescription(writer);
-            writer.write(System.lineSeparator());
-            writeMinMax(writer, 0.3);
+            for (Question question : survey.getTableToAnalize().getQuestions()) {
+                if (allAnswers) {
+                    writeFullDescription(writer, question);
+                }
+                if (minMax) {
+                    writeMinMax(writer, question, 0.2);
+                }
+                if (intervals)
+                    writer.write(generateSturges(question));
+            }
 
-            TableExcel tableToAnalyze = survey.getTable();
-            ArrayList<Question> questions = tableToAnalyze.getQuestions();
-            writer.write(generateQuestionComparison(questions.get(7), questions.get(9)));
+            if (compare)
+                writer.write(generateQuestionComparison(survey.getTableToAnalize().getQuestions().get(q1 - 1),
+                        survey.getTableToAnalize().getQuestions().get(q2 - 1)));
+
             writer.flush();
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
@@ -59,12 +88,12 @@ public class DescriptionGenerator {
         return result;
     }
 
-    private String generateIntroduction() throws IOException {
-        String result = "В ходе настоящего исследования был проведен опрос " + survey.getRespondersName().get(0) + " по теме  : \"" + survey.getHeader() + "\".\n";
+    private String generateIntroduction() {
+        String result = "В ходе настоящего исследования был проведен опрос " + survey.getRespondersName().get(0) + " по теме \"" + survey.getHeader() + "\".\n";
         return result + String.format("Данное анкетировано состояло из %d вопросов. " +
                         "Участие в анкетировании приняло %d респондентов.\n",
-                survey.getTable().getQuestions().size(),
-                survey.getTable().getResponders().size());
+                survey.getTableToAnalize().getQuestions().size(),
+                survey.getTableToAnalize().getResponders().size());
     }
 
     /**
@@ -74,34 +103,27 @@ public class DescriptionGenerator {
      * @return описание вопроса по Формуле Стёрджеса
      */
     private String Sturges(Question question) {
-        Intervals ints = new Intervals(question, survey.getTable().getResponders().size());
+        Intervals ints = new Intervals(question, survey.getTableToAnalize().getResponders().size());
         return ints.toString();
     }
 
-    private String generateSturges() {
-        StringBuilder result = new StringBuilder();
-
-        survey.getTable()
-                .getQuestions()
-                .stream()
-                .filter(q -> q.isQuantitative)
-                .forEach(q -> result.append(Sturges(q)));
-
-        return result.toString();
+    private String generateSturges(Question question) {
+        return Sturges(question);
     }
 
-    private void writeFullDescription(FileWriter writer) throws IOException {
-        if (survey.getImportantQuestions() != null) {
-            for (Question question : survey.getImportantQuestions()) {
-                writer.write(describeAll(question));
-            }
-        }
+
+    private String generateQuestionComparison(Question question1, Question question2) {
+        return Intercouse.doIntercourse(question1, question2);
     }
 
-    private void writeMinMax(FileWriter writer, double sensitivity) throws IOException {
-        for (Question question : survey.getTable().getQuestions()) {
-            writer.write(describeMinMax(question, sensitivity));
-        }
+    private void writeFullDescription(FileWriter writer, Question question) throws IOException {
+        writer.write(describeAll(question));
+        writer.write(System.lineSeparator());
+    }
+
+    private void writeMinMax(FileWriter writer, Question question, double sensitivity) throws IOException {
+        writer.write(describeMinMax(question, sensitivity));
+        writer.write(System.lineSeparator());
     }
 
     /**
@@ -149,11 +171,13 @@ public class DescriptionGenerator {
             String s = templates.getNext(Templates.Type.MAX);
             sBuilder.append(String.format(s, highest.getValue() * 100, question.description, highest.getKey()));
 
-
-            for (int i = answers.size() - 2; i < answers.size() - offset; ++i) {
-                AbstractMap.SimpleEntry<String, Double> entry = answers.get(i);
+            Consumer<AbstractMap.SimpleEntry<String, Double>> generateMiddle = entry -> {
                 sBuilder.append(String.format(templates.getNext(Templates.Type.MIDDLE), entry.getValue() * 100, entry.getKey()));
                 sBuilder.append(" ");
+            };
+
+            for (int i = answers.size() - 2; i < answers.size() - offset; ++i) {
+                generateMiddle.accept(answers.get(i));
             }
             sBuilder.append(". ").append(System.lineSeparator());
 
@@ -162,17 +186,11 @@ public class DescriptionGenerator {
             sBuilder.append(String.format(s, lowest.getValue() * 100, question.description, lowest.getKey()));
 
             for (int i = offset - 1; i >= 0; --i) {
-                AbstractMap.SimpleEntry<String, Double> entry = answers.get(i);
-                sBuilder.append(String.format(templates.getNext(Templates.Type.MIDDLE), entry.getValue() * 100, entry.getKey()));
-                sBuilder.append(" ");
+                generateMiddle.accept(answers.get(i));
             }
             sBuilder.append(". ").append(System.lineSeparator());
         }
         return sBuilder.toString();
     }
 
-
-    private String generateQuestionComparison(Question question1, Question question2) {
-        return Intercouse.doIntercourse(question1, question2);
-    }
 }
