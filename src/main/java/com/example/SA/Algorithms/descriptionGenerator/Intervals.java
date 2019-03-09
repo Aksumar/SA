@@ -60,17 +60,16 @@ public class Intervals {
 
     @Override
     public String toString() {
-        String result = String.format("При следующем описании вопроса <%s>\n была использована формула Стейджерса с шагом %.1f\n" +
-                " и кол-вом интервалов %d.\n", qToAnalyse.description, stepOfInterval, amountOfIntervals);
+        StringBuilder result = new StringBuilder(String.format("При следующем описании была использована формула Стейджерса с шагом %.1f" +
+                " и кол-вом интервалов %d.\n", stepOfInterval, amountOfIntervals));
         for (int i = 0; i < amountOfIntervals; ++i)
-            result += histogram.get(i).toString(i, respondersAmount);
+            result.append(histogram.get(i).toString(i, respondersAmount));
         OneInterval maxInterval = histogram.stream().max(Comparator.comparing(interval -> interval.amountAnswers)).get();
         OneInterval minInterval = histogram.stream().min(Comparator.comparing(interval -> interval.amountAnswers)).get();
-        result += String.format("Таким образом, больше всего значений - %d -  лежат в промежутке : (%.1f - %.1f).\n",
-                maxInterval.amountAnswers, maxInterval.minValue, maxInterval.maxValue) +
-                String.format("А меньше всего значений - %d -  лежат в промежутке : (%.1f - %.1f).\n",
-                        minInterval.amountAnswers, minInterval.minValue, minInterval.maxValue);
-        return result;
+        result.append(String.format("Таким образом, больше всего значени (%d) лежат в промежутке от %.1f до %.1f.\n",
+                maxInterval.amountAnswers, maxInterval.minValue, maxInterval.maxValue)).append(String.format("А меньше всего значений (%d) лежат в промежутке от %.1f до %.1f.\n",
+                minInterval.amountAnswers, minInterval.minValue, minInterval.maxValue));
+        return result.toString();
     }
 }
 
@@ -80,8 +79,8 @@ class OneInterval {
     int amountAnswers = 0;
 
     String toString(int numberOfInterval, int inTotal) {
-        return String.format("\tВ Интервал № %d : (%.1f - %.1f) входят %d ответов c частотой попадания в интервал %.3f.\n",
-                numberOfInterval, minValue, maxValue, amountAnswers, (double) amountAnswers / inTotal);
+        return String.format("\tВ интервал №%d (%.1f - %.1f) входят %d ответов c частотой попадания в интервал %.3f.\n",
+                numberOfInterval + 1, minValue, maxValue, amountAnswers, (double) amountAnswers / inTotal);
 
     }
 }

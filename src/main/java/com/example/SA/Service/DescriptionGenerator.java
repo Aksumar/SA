@@ -12,8 +12,6 @@ import java.nio.file.FileSystemException;
 import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Supplier;
 
 /**
  * Основной класс создатель описания анкетирования. Тянет за собой нужные методы
@@ -66,6 +64,10 @@ public class DescriptionGenerator {
         try (FileWriter writer = new FileWriter(result.getAbsolutePath())) {
             writer.write(generateIntroduction());
             for (Question question : survey.getTableToAnalize().getQuestions()) {
+                writer.write("**");
+                writer.write(question.description);
+                writer.write("**");
+                writer.write(System.lineSeparator());
                 if (allAnswers) {
                     writeFullDescription(writer, question);
                 }
@@ -80,6 +82,7 @@ public class DescriptionGenerator {
                 writer.write(generateQuestionComparison(survey.getTableToAnalize().getQuestions().get(q1 - 1),
                         survey.getTableToAnalize().getQuestions().get(q2 - 1)));
 
+            writer.write(System.lineSeparator());
             writer.flush();
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
@@ -103,8 +106,11 @@ public class DescriptionGenerator {
      * @return описание вопроса по Формуле Стёрджеса
      */
     private String Sturges(Question question) {
+        if (question.isQuantitative) {
         Intervals ints = new Intervals(question, survey.getTableToAnalize().getResponders().size());
         return ints.toString();
+        }
+        return "";
     }
 
     private String generateSturges(Question question) {
@@ -138,7 +144,7 @@ public class DescriptionGenerator {
         ArrayList<AbstractMap.SimpleEntry<String, Double>> answers = question.getAnswers();
 
         AbstractMap.SimpleEntry<String, Double> firstEntry = answers.get(0);
-        sBuilder.append(String.format(templates.getNext(Templates.Type.ALL), firstEntry.getValue() * 100, question.description, firstEntry.getKey()));
+        sBuilder.append(String.format(templates.getNext(Templates.Type.ALL), firstEntry.getValue() * 100, firstEntry.getKey()));
 
         for (int i = 1; i < answers.size(); ++i) {
             AbstractMap.SimpleEntry<String, Double> entry = answers.get(i);
@@ -169,11 +175,10 @@ public class DescriptionGenerator {
             // ответили на курорте, 10% отметили на даче.";
             AbstractMap.SimpleEntry<String, Double> highest = answers.get(answers.size() - 1);
             String s = templates.getNext(Templates.Type.MAX);
-            sBuilder.append(String.format(s, highest.getValue() * 100, question.description, highest.getKey()));
+            sBuilder.append(String.format(s, highest.getValue() * 100, highest.getKey()));
 
             Consumer<AbstractMap.SimpleEntry<String, Double>> generateMiddle = entry -> {
                 sBuilder.append(String.format(templates.getNext(Templates.Type.MIDDLE), entry.getValue() * 100, entry.getKey()));
-                sBuilder.append(" ");
             };
 
             for (int i = answers.size() - 2; i < answers.size() - offset; ++i) {
@@ -183,7 +188,7 @@ public class DescriptionGenerator {
 
             AbstractMap.SimpleEntry<String, Double> lowest = answers.get(offset);
             s = templates.getNext(Templates.Type.MIN);
-            sBuilder.append(String.format(s, lowest.getValue() * 100, question.description, lowest.getKey()));
+            sBuilder.append(String.format(s, lowest.getValue() * 100, lowest.getKey()));
 
             for (int i = offset - 1; i >= 0; --i) {
                 generateMiddle.accept(answers.get(i));

@@ -84,8 +84,8 @@ public class Templates {
         return sb.toString();
     }
 
-    private static final String MIN_TEMP = "#rate %.1f%% #actors на вопрос \"%s\" #action \"%s\"";
-    private static final String MAX_TEMP = "#rate #actors (%.1f%%) на вопрос \"%s\" #action \"%s\"";
+    private static final String MIN_TEMP = "#rate %.1f%% #actors #action \"%s\"";
+    private static final String MAX_TEMP = "#rate #actors (%.1f%%) #action \"%s\"";
 }
 
 //part of a template
