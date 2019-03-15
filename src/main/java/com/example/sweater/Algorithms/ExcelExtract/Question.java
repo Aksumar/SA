@@ -27,6 +27,11 @@ public class Question {
         answers.add(new Answer(desc, this));   //addition
     }
 
+    public ArrayList<String> getUnsortedAnswers(){
+        return new ArrayList<>(responses.keySet());
+        }
+
+
     public ArrayList<AbstractMap.SimpleEntry<String, Double>> getAnswers() {
         ArrayList<AbstractMap.SimpleEntry<String, Double>> answerSet = new ArrayList<>();
 
@@ -35,22 +40,22 @@ public class Question {
         return answerSet;
     }
 
-    Question createSingleFromMultiple(String baseQuestion){
-        ArrayList<Question> questions = new ArrayList<>();
-        ArrayList<Question> allQuestions = new ArrayList<>();
-        try{
-            allQuestions = er.questions();
-        } catch (IOException e) {e.printStackTrace();}
-
-        for (Question q : allQuestions) {
-            if (q.description.contains(baseQuestion + " - "))
-                questions.add(q);
-        }
-
-        Question single = new Question(baseQuestion);
-        for (Question q : questions)
-            for (String a : q.responses.keySet())
-                single.addResponse(a);
-        return single;
-    }
+//    static Question createSingleFromMultiple(String baseQuestion){
+//        ArrayList<Question> questions = new ArrayList<>();
+//        ArrayList<Question> allQuestions = new ArrayList<>();
+//        try{
+//            allQuestions = er.questions();
+//        } catch (IOException e) {e.printStackTrace();}
+//
+//        for (Question q : allQuestions) {
+//            if (q.description.contains(baseQuestion + " - "))
+//                questions.add(q);
+//        }
+//
+//        Question single = new Question(baseQuestion);
+//        for (Question q : questions)
+//            for (String a : q.responses.keySet())
+//                single.addResponse(a);
+//        return single;
+//    }
 }
