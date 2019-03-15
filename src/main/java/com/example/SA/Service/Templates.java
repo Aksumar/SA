@@ -18,8 +18,9 @@ public class Templates {
             DESCALL = 2,
             HRATE = 3,
             LRATE = 4,
-            MIDDLE = 5;
-    private TemplateBrick[] templates = new TemplateBrick[6];
+            MIDDLE = 5,
+            QUESTION = 6;
+    private TemplateBrick[] templates = new TemplateBrick[7];
     ////////////////////////////////
 
     private static final List<String> _brickNames =
@@ -29,7 +30,8 @@ public class Templates {
                     "describeAll",
                     "highRate",
                     "lowRate",
-                    "middle"
+                    "middle",
+                    "question"
             );
 
     Templates(File directory) {
@@ -37,6 +39,7 @@ public class Templates {
             throw new IllegalArgumentException();
 
         File[] childFiles = directory.listFiles();
+        Arrays.sort(childFiles);
         try {
             int i = 0;
             for (File f : childFiles) {
@@ -81,11 +84,12 @@ public class Templates {
         }
         replace(sb, "#actors", templates[ACTORS].getNext());
         replace(sb, "#action", templates[ACTIONS].getNext());
+        replace(sb, "#question", templates[QUESTION].getNext());
         return sb.toString();
     }
 
-    private static final String MIN_TEMP = "#rate %.1f%% #actors #action \"%s\"";
-    private static final String MAX_TEMP = "#rate #actors (%.1f%%) #action \"%s\"";
+    private static final String MIN_TEMP = "#rate %.1f%% #question #action \"%s\"";
+    private static final String MAX_TEMP = "#rate #actors (%.1f%%) #question #action \"%s\"";
 }
 
 //part of a template
