@@ -1,6 +1,8 @@
 package com.example.SA.Service;
 
 import com.example.SA.Algorithms.ExcelExtract.Question;
+import com.example.SA.Algorithms.ExcelExtract.Responder;
+import com.example.SA.Algorithms.descriptionGenerator.Group;
 import com.example.SA.Algorithms.descriptionGenerator.Intercouse;
 import com.example.SA.Algorithms.descriptionGenerator.Intervals;
 import com.example.SA.domain.Servey.Servey;
@@ -11,6 +13,8 @@ import java.io.IOException;
 import java.nio.file.FileSystemException;
 import java.util.AbstractMap;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.function.Consumer;
 
 /**
@@ -196,6 +200,34 @@ public class DescriptionGenerator {
             sBuilder.append(". ").append(System.lineSeparator());
         }
         return sBuilder.toString();
+    }
+
+    /**
+     *
+     * @param questionToFormGroupNumber номер вопроса, по ответу на который составляется группа 6 - 6. напишите ваш пол, М/Ж
+     * @param questionToAnswerNumber номер вопроса, по которому дается анализ 8
+     * @param groupName имя, которое будет использоваться для описания группы "женщины"
+     * @param answerToGroupBy ответ, по которому будет формироваться группа "Ж"
+     * @return строка-анализ ответов группы на конкретный вопрос
+     */
+    public String describeGroupByQuestion(int questionToFormGroupNumber, int questionToAnswerNumber, String groupName, String answerToGroupBy){
+        ArrayList<Responder> allResponders = survey.getTableToAnalize().getResponders();
+        ArrayList<Question> allQuestions = survey.getTableToAnalize().getQuestions();
+        ArrayList<Responder> res = new ArrayList<>();
+
+        Question q = allQuestions.get(questionToFormGroupNumber);
+
+        String[] answers = new String[q.getResponses().keySet().size()];
+        answers = q.getResponses().keySet().toArray(answers);
+
+        for (int i = 0; i < answers.length; i++) {
+            if (answers[i].equals(answerToGroupBy))
+                res.add(allResponders.get(i));
+        }
+
+        Group g = new Group(groupName, res);
+
+        return g.speak(allQuestions.get(questionToAnswerNumber));
     }
 
 }
